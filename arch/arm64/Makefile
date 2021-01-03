@@ -55,6 +55,20 @@ else
 KBUILD_CFLAGS	+= -mgeneral-regs-only
 endif
 KBUILD_CFLAGS	+= $(lseinstr) $(brokengasinst) $(compat_vdso)
+
+ifeq ($(CONFIG_ARCH_KHAJE), y)
+ifeq ($(cc-name),clang)
+KBUILD_CFLAGS   += -mcpu=cortex-a53
+KBUILD_AFLAGS   += -mcpu=cortex-a53
+ifeq ($(CONFIG_LD_IS_LLD), y)
+KBUILD_LDFLAGS  += -mllvm -mcpu=cortex-a53
+endif
+else
+KBUILD_CFLAGS   += -mcpu=cortex-a73.cortex-a53
+KBUILD_AFLAGS   += -mcpu=cortex-a73.cortex-a53
+endif
+endif
+
 KBUILD_CFLAGS	+= -fno-asynchronous-unwind-tables
 KBUILD_CFLAGS	+= $(call cc-disable-warning, psabi)
 KBUILD_AFLAGS	+= $(lseinstr) $(brokengasinst) $(compat_vdso)
