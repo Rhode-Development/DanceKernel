@@ -1,11 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
-<<<<<<< HEAD
- * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
-=======
  * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
  * Copyright (c) 2018, Pal Zoltan Illes (tbalden) - kcal rgb
->>>>>>> fc9ee60b5bc0... Implement KCAL color calibration
  */
 #include <linux/moduleparam.h>
 #include <drm/msm_drm_pp.h>
@@ -227,15 +223,12 @@ void sde_setup_dspp_pccv4(struct sde_hw_dspp *ctx, void *cfg)
 	int i = 0;
 	int kcal_min = 20;
 	u32 base = 0;
-<<<<<<< HEAD
-=======
         u32 opcode = 0, local_opcode = 0;
 #ifdef OPLUS_BUG_STABILITY
 	static struct drm_msm_pcc *pcc_cfg_last;
 	struct dsi_display *display = get_main_display();
 #endif
 	char tag_name[64];
->>>>>>> fc9ee60b5bc0... Implement KCAL color calibration
 
 	if (!ctx || !cfg) {
 		DRM_ERROR("invalid param ctx %pK cfg %pK\n", ctx, cfg);
