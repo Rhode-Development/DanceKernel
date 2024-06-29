@@ -15,10 +15,12 @@ ARCH=arm64
 '
 make -C $(pwd) O=$(pwd)/out ${ARGS} clean && make -C $(pwd) O=$(pwd)/out ${ARGS} mrproper
 make -C $(pwd) O=$(pwd)/out ${ARGS} vendor/bengal-perf_defconfig vendor/debugfs.config vendor/ext_config/moto-bengal.config vendor/ext_config/rhode-default.config
-make -C $(pwd) O=$(pwd)/out ${ARGS} menuconfig
-make -C $(pwd) O=$(pwd)/out ${ARGS} -j$(nproc)
+#make -C $(pwd) O=$(pwd)/out ${ARGS} menuconfig
+#make -C $(pwd) O=$(pwd)/out ${ARGS} -j$(nproc)
+make -C $(pwd) O=$(pwd)/out ${ARGS} dtbs dtboimage
 
-#to copy all the kernel modules (.ko) to "modules" folder.
 mkdir -p modules
 find . -type f -name "*.ko" -exec cp -n {} modules \;
 echo "Module files copied to the 'modules' folder."
+
+echo "Script Finish"
